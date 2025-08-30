@@ -43,7 +43,7 @@ app.use('/home', homeRouter);
 
 // redirect all unknown routes to login
 app.use((req, res, next) => {
-  return res.redirect('/auth/login');
+  return res.redirect('/home');
 });
 
 
