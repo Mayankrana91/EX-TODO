@@ -41,6 +41,12 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/home', homeRouter);
 
+// redirect all unknown routes to login
+app.use((req, res, next) => {
+  return res.redirect('/auth/login');
+});
+
+
 
 app.use(function(req, res, next) {
   next(createError(404));
