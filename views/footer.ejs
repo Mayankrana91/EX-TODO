@@ -1,0 +1,124 @@
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="brand">
+      <span class="brand-logo">◎</span>
+      <span class="brand-text">ExTodo</span>
+    </div>
+
+    <ul class="footer-links">
+      <li><a href="/home" class="link">Home</a></li>
+      <li><a href="#" class="f-link">Features</a></li>
+      <li><a href="#" class="f-link">About</a></li>
+      <li><a href="#" class="f-link">Contact</a></li>
+    </ul>
+
+    <p class="footer-note">
+      &copy;
+      <%= new Date(). getFullYear() %> ExTodo. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+  :root {
+    --brand-dark: #2c3e50;
+    --accent-color: #e74c3c;
+    --text-color-light: #ecf0f1;
+  }
+
+  body {
+    padding-bottom: 70px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: var(--brand-dark);
+    color: var(--text-color-light);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: var(--text-color-light);
+    font-size: 1.5rem;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--accent-color);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .footer-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .f-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+  }
+
+  .f-link:hover {
+    color: var(--accent-color);
+  }
+
+  .footer-note {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-note {
+      margin-top: 0.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "Mayank",
+      "email": "mayankrana8901@gmail.com",
+      "password": "12345",
+      "todos": []
+    },
+    {
+      "username": "8522229",
+      "email": "mayankrana0003@gmail.com",
+      "password": "12345",
+      "todos": []
+    }
+  ]
+} 
