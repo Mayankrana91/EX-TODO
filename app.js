@@ -41,10 +41,11 @@ app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/home', homeRouter);
 
-// redirect all unknown routes to login
-app.use((req, res, next) => {
-  return res.redirect('/home');
+app.get("/past", (req, res) => {
+  res.render("past", { username: req.session.username });
 });
+
+
 
 
 
@@ -59,6 +60,9 @@ app.use(function(err, req, res, next) {
 
   res.status(err.status || 500);
   res.render('error');
+});
+app.use("/past", (req, res) => {
+  res.render("past");  
 });
 
 module.exports = app;

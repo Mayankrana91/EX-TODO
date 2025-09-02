@@ -6,9 +6,15 @@
     </a>
 
     <ul class="links">
+      <% if (username && username !== "guest") { %>
       <li><a href="/home" class="link">Home</a></li>
-      <li><a href="#" class="link">Features</a></li>
+      <li><a href="/past" class="link">Past Todos</a></li>
       <li><a href="#" class="link">About</a></li>
+      <% } else { %>
+      <li><a href="/home" class="link">Home</a></li>
+      <li><a href="#" class="link">About</a></li>
+     <% } %>
+
     </ul>
 
     <div class="actions">

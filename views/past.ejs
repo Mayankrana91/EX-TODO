@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌿 ExTodo - Past Todos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-dark: #2c3e50;
+      --background-color: #f5f7fa;
+      --card-bg: #ffffff;
+      --text-dark: #333333;
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                   0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--background-color);
+      color: var(--text-dark);
+      padding-top: 80px; /* navbar */
+      padding-bottom: 60px; /* footer */
+    }
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 2rem;
+    }
+    .todo-list-container {
+      width: 100%;
+      max-width: 500px;
+    }
+    .todo-card {
+      background: var(--card-bg);
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .todo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .todo-card span {
+      flex: 1;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <%- include('navbar', { username: username }) %>
+
+  <main>
+    <h1>Past Todos</h1>
+    <div class="todo-list-container" id="pastList"></div>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let todos = JSON.parse(localStorage.getItem("todos")) || [];
+      let list = document.getElementById("pastList");
+
+      if (todos.length === 0) {
+        list.innerHTML = "<p>No past todos found.</p>";
+        return;
+      }
+
+      todos.forEach(todo => {
+        let card = document.createElement("div");
+        card.className = "todo-card";
+        
+        let span = document.createElement("span");
+        span.textContent = todo.text;
+
+        card.appendChild(span);
+        list.appendChild(card);
+      });
+    });
+  </script>
+
+  <%- include('footer') %>
+</body>
+</html>
