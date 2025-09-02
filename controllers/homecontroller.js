@@ -42,7 +42,7 @@ const getHome = (req, res) => {
 
 const addTask = (req, res) => {
   const { username, task } = req.body;
-  if (!task) return res.redirect(`/home?username=${username}`);
+  if (!task) return res.redirect(`/home`);
 
   fs.readFile(filepath, "utf-8", (err, data) => {
     if (err) return res.status(500).send("Internal Server Error");
@@ -55,7 +55,7 @@ const addTask = (req, res) => {
     }
 
     const userIndex = users.findIndex(u => u.username === username);
-    if (userIndex === -1) return res.redirect(`/home?username=${username}`);
+    if (userIndex === -1) return res.redirect(`/home`);
 
     const newTask = { id: Date.now(), text: task, completed: false };
     users[userIndex].todos = users[userIndex].todos || [];
@@ -63,7 +63,7 @@ const addTask = (req, res) => {
 
     fs.writeFile(filepath, JSON.stringify({ users }, null, 2), err => {
       if (err) return res.status(500).send("Internal Server Error");
-      res.redirect(`/home?username=${username}`);
+      res.redirect(`/home`);
     });
   });
 };
@@ -83,14 +83,14 @@ const toggleTask = (req, res) => {
     }
 
     const userIndex = users.findIndex(u => u.username === username);
-    if (userIndex === -1) return res.redirect(`/home?username=${username}`);
+    if (userIndex === -1) return res.redirect(`/home`);
 
     const todo = users[userIndex].todos.find(t => t.id == taskId);
     if (todo) todo.completed = !todo.completed;
 
     fs.writeFile(filepath, JSON.stringify({ users }, null, 2), err => {
       if (err) return res.status(500).send("Internal Server Error");
-      res.redirect(`/home?username=${username}`);
+      res.redirect(`/home`);
     });
   });
 };
@@ -110,13 +110,13 @@ const deleteTask = (req, res) => {
     }
 
     const userIndex = users.findIndex(u => u.username === username);
-    if (userIndex === -1) return res.redirect(`/home?username=${username}`);
+    if (userIndex === -1) return res.redirect(`/home`);
 
     users[userIndex].todos = users[userIndex].todos.filter(t => t.id != taskId);
 
     fs.writeFile(filepath, JSON.stringify({ users }, null, 2), err => {
       if (err) return res.status(500).send("Internal Server Error");
-      res.redirect(`/home?username=${username}`);
+      res.redirect(`/home`);
     });
   });
 };
