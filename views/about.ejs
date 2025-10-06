@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About ExTodo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-dark: #2c3e50;
+      --accent-color: #e74c3c;
+      --background-color: #f5f7fa;
+      --card-bg: #ffffff;
+      --text-dark: #333333;
+      --text-light: #6b7280;
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                   0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--background-color);
+      color: var(--text-dark);
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .about-section {
+      max-width: 800px;
+    }
+
+    h1 {
+      color: var(--brand-dark);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <%- include('navbar') %>
+
+  <main>
+    <div class="about-section">
+      <h1>About ExTodo</h1>
+      <p>
+        ExTodo is a powerful and intuitive to-do list application designed to help you stay organized and productive. 
+        Whether you're managing personal tasks, work projects, or collaborative efforts, ExTodo provides the tools you need to keep track of everything that matters.
+      </p>
+      <p>
+        Our mission is to simplify task management and empower users to achieve their goals with ease. 
+        This application is built with Node.js, Express, and EJS, offering a fast, reliable, and user-friendly experience.
+      </p>
+    </div>
+  </main>
+
+  <%- include('footer') %>
+</body>
+</html>

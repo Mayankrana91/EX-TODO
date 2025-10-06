@@ -3,102 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌿 ExTodo </title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>🌿 ExTodo - Past Todos</title>
+
   <style>
     :root {
       --brand-dark: #2c3e50;
-      --background-color: #f5f7fa;
-      --card-bg: #ffffff;
-      --text-dark: #333333;
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-                   0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-                   0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --accent: #2ecc71;
+      --bg: #f9f9f9;
+      --card: #fff;
+      --text: #333;
+      --muted: #888;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: var(--background-color);
-      color: var(--text-dark);
-      padding-top: 80px; /* navbar */
-      padding-bottom: 60px; /* footer */
-    }
-    main {
-      flex: 1;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--brand-dark);
-      margin-bottom: 2rem;
-    }
-    .todo-list-container {
-      width: 100%;
-      max-width: 500px;
-    }
-    .todo-card {
-      background: var(--card-bg);
-      width: 100%;
-      padding: 1rem 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .todo-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background: var(--bg); color: var(--text); display: flex; flex-direction: column; height: 100vh; }
+    .layout { flex: 1; display: flex; }
+
+    /* Main Content */
+    .content { flex: 1; padding: 2rem 1.5rem; overflow-y: auto; }
+    .content h1 {
+      font-size: 1.6rem; font-weight: 700; color: var(--brand-dark);
+      margin-bottom: 1.5rem;
     }
 
-    .todo-card span {
-      flex: 1;
-      word-break: break-word;
+    /* Past Todos List */
+    .todo-list-container { max-width: 700px; margin: auto; display: flex; flex-direction: column; gap: 1rem; }
+    .todo-card {
+      display: flex; flex-direction: column; gap: 0.4rem;
+      background: var(--card); padding: 1rem 1.2rem; border-radius: 10px;
+      border: 1px solid #eee;
+      transition: box-shadow 0.2s ease;
     }
+    .todo-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
+
+    .todo-top { display: flex; justify-content: space-between; align-items: center; }
+    .todo-text { font-weight: 500; flex: 1; }
+    .todo-meta { font-size: 0.85rem; color: var(--muted); }
+
+    .restore-btn {
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer; font-weight: 600;
+      transition: background 0.2s ease;
+    }
+    .restore-btn:hover { background: #27ae60; }
+
+    .empty-message { text-align: center; font-size: 1.1rem; color: var(--muted); margin-top: 2rem; }
+
+    /* Dark Mode */
+    body.dark-mode { background: #121212; color: #f5f5f5; }
+    body.dark-mode .todo-card { background: #555454; border: 1px solid #444; }
+    body.dark-mode h1 { color: #f5f5f5; }
+    body.dark-mode .todo-meta { color: #aaa; }
   </style>
 </head>
 <body>
-  <%- include('navbar', { username: username }) %>
+  <!-- Navbar -->
+  <%- include("navbar", { username: username }) %>
 
-  <main>
-    <h1>Past Todos</h1>
-    <div class="todo-list-container" id="pastList"></div>
-  </main>
+  <!-- Layout -->
+  <div class="layout">
+    <% if(username !== "guest") { %>
+      <!-- Sidebar -->
+      <%- include("sidebar") %>
+    <% } %>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      let todos = JSON.parse(localStorage.getItem("todos")) || [];
-      let list = document.getElementById("pastList");
+    <!-- Content -->
+    <main class="content">
+      <h1>Past Todos</h1>
+      <div class="todo-list-container">
+        <% if (pastTodos.length === 0) { %>
+          <p class="empty-message">No deleted tasks yet 🌿</p>
+        <% } else { %>
+          <% pastTodos.forEach(todo => { %>
+            <div class="todo-card">
+              <div class="todo-top">
+                <span class="todo-text"><%= todo.text %></span>
+                <form action="/past/restore" method="POST">
+                  <input type="hidden" name="taskId" value="<%= todo.id %>">
+                  <input type="hidden" name="username" value="<%= username %>">
+                  <button type="submit" class="restore-btn">↩ Restore</button>
+                </form>
+              </div>
+              <span class="todo-meta">
+                Deleted on <%= new Date(todo.deletedAt).toLocaleDateString() %> at
+                <%= new Date(todo.deletedAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) %>
+              </span>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+    </main>
+  </div>
 
-      if (todos.length === 0) {
-        list.innerHTML = "<p>No past todos found.</p>";
-        return;
-      }
-
-      todos.forEach(todo => {
-        let card = document.createElement("div");
-        card.className = "todo-card";
-        
-        let span = document.createElement("span");
-        span.textContent = todo.text;
-
-        card.appendChild(span);
-        list.appendChild(card);
-      });
-    });
-  </script>
-
-  <%- include('footer') %>
+  <!-- Footer -->
+  <%- include("footer") %>
 </body>
 </html>

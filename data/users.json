@@ -3,19 +3,110 @@
     {
       "username": "Mayank",
       "email": "mayankrana8901@gmail.com",
-      "password": "12345",
-      "todos": []
+      "password": "123",
+      "todos": [
+        {
+          "id": 1759422059654,
+          "text": "Meeting",
+          "description": "Hotel 5",
+          "completed": true,
+          "category": "Work",
+          "priority": "High",
+          "deadline": null,
+          "reminder": "2001-04-30T18:30:00.000Z",
+          "reminderSent": true,
+          "completedAt": "2025-10-03T08:13:03.995Z"
+        },
+        {
+          "id": 1759422227989,
+          "text": "wwwwwwwww",
+          "description": "",
+          "completed": true,
+          "category": "General",
+          "priority": "Medium",
+          "deadline": "2025-10-09",
+          "reminder": null,
+          "reminderSent": false,
+          "completedAt": "2025-10-03T08:13:05.593Z"
+        },
+        {
+          "id": 1759422249444,
+          "text": "wwwwwwwwqqqqqqqqqqqq",
+          "description": "",
+          "completed": true,
+          "category": "General",
+          "priority": "Medium",
+          "deadline": null,
+          "reminder": null,
+          "reminderSent": false,
+          "completedAt": "2025-10-03T08:13:06.973Z"
+        },
+        {
+          "id": 1759422910501,
+          "text": "helooooo",
+          "description": "hiii",
+          "completed": true,
+          "category": "Work",
+          "priority": "Low",
+          "deadline": "2025-10-02",
+          "reminder": "2025-10-02T00:00:00.000Z",
+          "reminderSent": true,
+          "completedAt": "2025-10-03T08:13:07.687Z"
+        },
+        {
+          "id": 1759423090614,
+          "text": "byyy",
+          "description": "",
+          "completed": true,
+          "category": "General",
+          "priority": "Medium",
+          "deadline": "2025-10-02T22:09",
+          "reminder": "2025-10-02T16:39:00.000Z",
+          "reminderSent": true,
+          "completedAt": "2025-10-03T08:13:07.861Z"
+        },
+        {
+          "id": 1759468769562,
+          "text": "today",
+          "description": "",
+          "completed": true,
+          "category": "General",
+          "priority": "Medium",
+          "deadline": "2025-10-03T10:51",
+          "reminder": null,
+          "reminderSent": false,
+          "completedAt": "2025-10-03T08:13:08.084Z"
+        },
+        {
+          "id": 1759468832618,
+          "text": "Todayy",
+          "description": "",
+          "completed": true,
+          "category": "General",
+          "priority": "Medium",
+          "deadline": "2025-10-03",
+          "reminder": null,
+          "reminderSent": false,
+          "completedAt": "2025-10-03T08:13:08.401Z"
+        },
+        {
+          "id": 1759468865615,
+          "text": "Boii",
+          "description": "",
+          "completed": true,
+          "category": "General",
+          "priority": "Medium",
+          "deadline": "2025-10-03T10:52",
+          "reminder": "2025-10-03T05:22:00.000Z",
+          "reminderSent": true,
+          "completedAt": "2025-10-03T08:13:08.601Z"
+        }
+      ]
     },
     {
-      "username": "8522229",
+      "username": "Mayankrr",
       "email": "mayankrana0003@gmail.com",
       "password": "12345",
-      "todos": []
-    },
-    {
-      "username": "Rahul",
-      "email": "mayankrana0080@gmail.com",
-      "password": "123",
       "todos": []
     }
   ]

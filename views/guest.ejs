@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌿 ExTodo - Stay Organized, Stay Ahead</title>
+
+  <style>
+    :root {
+      --brand-dark: #2c3e50;
+      --accent: #e74c3c;
+      --bg: #f9f9f9;
+      --card: #fff;
+      --text: #333;
+      --light: #888;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    header {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(135deg, var(--brand-dark), var(--accent));
+      color: white;
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    header p { font-size: 1.2rem; margin-bottom: 2rem; }
+    header .cta {
+      background: white; color: var(--accent); border: none;
+      padding: 0.8rem 1.5rem; border-radius: 6px; cursor: pointer;
+      font-size: 1rem; font-weight: 600;
+      transition: background 0.3s;
+    }
+    header .cta:hover { background: #f3f3f3; }
+
+    section { padding: 4rem 2rem; max-width: 1000px; margin: auto; }
+
+    /* Features */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+    .feature {
+      background: var(--card); padding: 1.5rem; border-radius: 10px;
+      text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .feature:hover { transform: translateY(-5px); }
+    .feature h3 { margin: 0.5rem 0; color: var(--accent); }
+
+    /* Screenshots */
+    .screenshots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+    .screenshots img {
+      width: 100%; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Comparison */
+    .comparison table {
+      width: 100%; border-collapse: collapse; text-align: center;
+      background: var(--card); border-radius: 10px; overflow: hidden;
+    }
+    .comparison th, .comparison td {
+      padding: 1rem; border: 1px solid #eee;
+    }
+    .comparison th { background: var(--brand-dark); color: white; }
+    .comparison td:first-child { font-weight: 600; text-align: left; }
+
+    /* Testimonials */
+    .testimonials {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+    }
+    .testimonial {
+      background: var(--card); padding: 1.5rem; border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-style: italic; position: relative;
+    }
+    .testimonial::before {
+      content: "“"; font-size: 2rem; color: var(--accent);
+      position: absolute; top: 10px; left: 15px;
+    }
+    .testimonial strong { display: block; margin-top: 1rem; color: var(--brand-dark); }
+
+    /* Final CTA */
+    .final-cta {
+      text-align: center; padding: 3rem 1rem; background: var(--brand-dark); color: white;
+    }
+    .final-cta button {
+      background: var(--accent); color: white; border: none;
+      padding: 0.8rem 1.5rem; border-radius: 6px; cursor: pointer;
+      font-size: 1rem; font-weight: 600;
+    }
+    .final-cta button:hover { background: #c0392b; }
+
+    footer { text-align: center; padding: 1rem; color: var(--light); background: #fff; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header>
+    <h1>🌿 ExTodo</h1>
+    <p>Stay organized, beat procrastination, and achieve more every day.</p>
+    <a href="/auth/signup"><button class="cta">Start for Free</button></a>
+        <a href="/auth/login"><button class="cta">Login</button></a>
+
+  </header>
+
+  <!-- Features -->
+  <section>
+    <h2 style="text-align:center; margin-bottom:2rem;">✨ Why Choose ExTodo?</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>⚡ Smart Reminders</h3>
+        <p>Get notified at the right time. Never miss a deadline again.</p>
+      </div>
+      <div class="feature">
+        <h3>📂 Organized Categories</h3>
+        <p>Separate work, study, and personal tasks effortlessly.</p>
+      </div>
+      <div class="feature">
+        <h3>🌍 Access Anywhere</h3>
+        <p>Your tasks are available anytime, on any device.</p>
+      </div>
+      <div class="feature">
+        <h3>🎯 Minimal & Clean</h3>
+        <p>No clutter. Just a distraction-free productivity space.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section>
+    <h2 style="text-align:center; margin-bottom:2rem;">📸 A Glimpse of ExTodo</h2>
+    <div class="screenshots">
+      <img src="/images/screen1.png" alt="Task dashboard preview">
+      <img src="/images/screen3.png" alt="Task creation form">
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="comparison">
+    <h2 style="text-align:center; margin-bottom:2rem;">📊 ExTodo vs Others</h2>
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>ExTodo</th>
+        <th>Google Keep</th>
+        <th>Todoist</th>
+      </tr>
+      <tr>
+        <td>Smart Reminders</td>
+        <td>✅</td><td>❌</td><td>✅</td>
+      </tr>
+      <tr>
+        <td>Categories</td>
+        <td>✅</td><td>❌</td><td>✅</td>
+      </tr>
+      <tr>
+        <td>Completely Free</td>
+        <td>✅</td><td>✅</td><td>❌</td>
+      </tr>
+      <tr>
+        <td>Minimal UI</td>
+        <td>✅</td><td>❌</td><td>❌</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <h2 style="text-align:center; margin-bottom:2rem;">💬 Loved by Early Users</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        ExTodo changed how I organize my study sessions. Clean and motivating!
+        <strong>- Priya, Student</strong>
+      </div>
+      <div class="testimonial">
+        Finally a to-do app that’s not bloated. Simple, beautiful, and effective.
+        <strong>- Arjun, Developer</strong>
+      </div>
+      <div class="testimonial">
+        I’ve stopped forgetting deadlines. The reminders are a lifesaver.
+        <strong>- Neha, Freelancer</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <div class="final-cta">
+    <h2>🚀 Ready to boost your productivity?</h2>
+    <p style="margin:1rem 0;">Join ExTodo today and take control of your tasks.</p>
+    <a href="/auth/signup"><button>Sign Up Free</button></a>
+  </div>
+
+  <footer>
+    🌿 ExTodo &copy; <%= new Date().getFullYear() %>
+  </footer>
+
+</body>
+</html>
